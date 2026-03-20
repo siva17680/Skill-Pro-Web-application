@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses | SkillPro Institute</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div id="loader-wrapper"><div class="spinner"></div></div>
+
+<header class="main-header">
+  <div class="container">
+    <nav class="main-nav">
+      <a href="index.html" class="logo"><span>SkillPro</span></a>
+
+      <ul class="nav-links" id="nav-links-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="instructors.html">Instructors</a></li>
+        <li><a href="events.html">Events</a></li>
+        <!-- MOBILE -->
+        <li id="mobile-auth" class="login-btn-mobile">
+          <a href="login.html" id="mobile-login" class="btn btn-primary">Login</a>
+          <a href="#" id="mobile-dashboard" class="btn btn-primary" style="display: none;">Dashboard</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="theme-switcher">
+          <input type="checkbox" id="theme-toggle-checkbox" />
+          <label for="theme-toggle-checkbox" class="slider">
+            <i class="bi bi-sun-fill sun-icon"></i>
+            <i class="bi bi-moon-fill moon-icon"></i>
+          </label>
+        </div>
+        <!-- DESKTOP -->
+        <a href="login.html" id="desktop-login" class="btn btn-primary">Login</a>
+        <a href="#" id="desktop-dashboard" class="btn btn-primary" style="display: none;">Dashboard</a>
+
+        <button class="hamburger" id="hamburger-menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    <section class="page-title-section">
+      <div class="container">
+        <h1>Our Courses</h1>
+        <p>Find the perfect program to accelerate your career.</p>
+      </div>
+    </section>
+
+    <section class="container filter-section">
+      <div class="filter-bar">
+        <div class="input-group search-bar">
+          <i class="bi bi-search"></i>
+          <input type="text" id="course-search-input" placeholder="Search by course name" />
+        </div>
+        <div class="input-group">
+          <i class="bi bi-tags-fill"></i>
+          <select id="category-filter">
+            <option value="all">All Categories</option>
+            <option value="Business">Business</option>
+            <option value="IT">IT</option>
+            <option value="Design">Design</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Finance">Finance</option>
+            <option value="Engineering">Engineering</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <i class="bi bi-geo-alt-fill"></i>
+          <select id="location-filter">
+            <option value="all">All Locations</option>
+            <option value="Colombo">Colombo</option>
+            <option value="Kandy">Kandy</option>
+            <option value="Matara">Matara</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <i class="bi bi-laptop"></i>
+          <select id="mode-filter">
+            <option value="all">All Modes</option>
+            <option value="Online">Online</option>
+            <option value="On-Campus">On-Campus</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="container course-section">
+      <div id="course-list" class="course-grid">Loading courses...</div>
+    </section>
+  </main>
+
+  <!-- Enroll Toast Modal -->
+  <div id="enroll-toast" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="bi bi-check-circle-fill"></i> Enrolled!</h3>
+        <button class="modal-close" id="enroll-toast-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>You have successfully enrolled in the course.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <div class="container">
+      <p>&copy; 2025 SkillPro Institute.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase & JS -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/courses.js"></script>
+
+  <script>
+    // 🔐 Show Dashboard Button Logic
+    firebase.auth().onAuthStateChanged(user => {
+      const loginBtnDesktop = document.getElementById("login-btn-desktop");
+      const loginBtnMobile = document.getElementById("login-btn-mobile");
+      const dashboardBtnDesktop = document.getElementById("dashboard-btn-desktop");
+      const dashboardBtnMobile = document.getElementById("dashboard-btn-mobile");
+
+      if (user) {
+        firebase.database().ref("users/" + user.uid).once("value").then(snapshot => {
+          const role = snapshot.val()?.role || "student";
+          let dashURL = "student-dashboard.html";
+          if (role === "admin") dashURL = "admin-dashboard.html";
+          else if (role === "instructor") dashURL = "instructor-dashboard.html";
+
+          if (loginBtnDesktop) loginBtnDesktop.style.display = "none";
+          if (loginBtnMobile) loginBtnMobile.style.display = "none";
+
+          if (dashboardBtnDesktop) {
+            dashboardBtnDesktop.href = dashURL;
+            dashboardBtnDesktop.style.display = "inline-flex";
+          }
+          if (dashboardBtnMobile) {
+            const a = dashboardBtnMobile.querySelector("a");
+            a.href = dashURL;
+            dashboardBtnMobile.style.display = "block";
+          }
+        });
+      } else {
+        if (loginBtnDesktop) loginBtnDesktop.style.display = "inline-flex";
+        if (loginBtnMobile) loginBtnMobile.style.display = "block";
+        if (dashboardBtnDesktop) dashboardBtnDesktop.style.display = "none";
+        if (dashboardBtnMobile) dashboardBtnMobile.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

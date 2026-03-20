@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - SkillPro</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-left"><h2>SkillPro Admin</h2></div>
+            <div class="nav-right">
+                <span id="user-name">Welcome, Admin</span>
+                <div class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle-checkbox">
+                    <label for="theme-toggle-checkbox" class="slider">
+                        <i class="bi bi-sun-fill sun-icon"></i>
+                        <i class="bi bi-moon-fill moon-icon"></i>
+                    </label>
+                </div>
+                <button id="logout-btn" class="btn btn-primary">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-title-section">
+            <div class="container">
+                <h1>Admin Dashboard</h1>
+                <p>Institute Management Panel</p>
+            </div>
+        </section>
+
+        <section class="container dashboard-section">
+            <div id="alert-message" class="alert-message" style="display: none;"></div>
+
+            <div class="dashboard-grid-full">
+                <!-- Courses -->
+                <div class="dashboard-card">
+                    <h3 id="course-form-title"><i class="bi bi-book-half"></i> Manage Courses</h3>
+                    <form id="add-course-form" class="management-form">
+                        <input type="hidden" id="edit-course-id">
+                        <div class="form-row">
+                            <input type="text" id="course-title" placeholder="Course Title" required>
+                            <select id="course-category" required>
+                                <option value="">Select Category</option>
+                                <option value="Business">Business</option>
+                                <option value="IT">IT</option>
+                                <option value="Art">Art</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" id="course-duration" placeholder="Duration (e.g. 4 weeks)" required>
+                            <select id="course-location" required>
+                                <option value="">Select Location</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Colombo">Colombo</option>
+                            </select>
+                            <select id="course-mode" required>
+                                <option value="">Select Mode</option>
+                                <option value="Online">Online</option>
+                                <option value="On-Campus">On-Campus</option>
+                                <option value="Hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <input type="number" id="course-price" placeholder="Price" required>
+                            <input type="url" id="course-image-url" placeholder="Image URL" required>
+                        </div>
+                        <button type="submit" id="submit-course-btn" class="btn btn-primary">Add Course</button>
+                        <button type="button" id="cancel-course-edit-btn" class="btn btn-secondary" style="display: none;">Cancel Edit</button>
+                    </form>
+
+                    <div class="management-table-wrapper">
+                        <table id="courses-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Location</th>
+                                    <th>Price</th>
+                                    <th>Duration</th>
+                                    <th>Mode</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Events -->
+                <div class="dashboard-card">
+                    <h3 id="event-form-title"><i class="bi bi-calendar-event"></i> Manage Events</h3>
+                    <form id="add-event-form" class="management-form">
+                        <input type="hidden" id="edit-event-id">
+                        <div class="form-row">
+                            <input type="text" id="event-title" placeholder="Event Title" required>
+                            <input type="date" id="event-date" required>
+                        </div>
+                        <textarea id="event-description" placeholder="Event Description" rows="3" required></textarea>
+                        <button type="submit" id="submit-event-btn" class="btn btn-primary">Add Event</button>
+                        <button type="button" id="cancel-event-edit-btn" class="btn btn-secondary" style="display: none;">Cancel Edit</button>
+                    </form>
+
+                    <div class="management-table-wrapper">
+                        <table id="events-table">
+                            <thead>
+                                <tr><th>Title</th><th>Date</th><th>Description</th><th>Actions</th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Instructors -->
+                <div class="dashboard-card">
+                    <h3><i class="bi bi-person-video3"></i> Manage Public Instructor Profiles</h3>
+                    <div class="management-table-wrapper">
+                        <table id="instructors-table">
+                            <thead><tr><th>Name</th><th>Expertise</th><th>Actions</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Users -->
+                <div class="dashboard-card">
+                    <h3><i class="bi bi-people-fill"></i> Manage Users</h3>
+                    <div class="management-table-wrapper">
+                        <table id="users-table">
+                            <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for assigning courses -->
+    <div id="assignment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-instructor-name">Assign Courses</h3>
+                <button id="modal-close-btn" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>Currently Assigned</h4>
+                <div id="assigned-courses-list"><p>No courses assigned yet.</p></div>
+                <hr>
+                <h4>Assign New Course</h4>
+                <div class="assign-form-group">
+                    <select id="unassigned-courses-select">
+                        <option value="">Select an available course.</option>
+                    </select>
+                    <button id="assign-course-btn" class="btn btn-primary">Assign</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 SkillPro Institute.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

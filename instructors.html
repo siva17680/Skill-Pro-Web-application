@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructors | SkillPro Institute</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div id="loader-wrapper"><div class="spinner"></div></div>
+
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo"><span>SkillPro</span></a>
+                <ul class="nav-links" id="nav-links-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="instructors.html" class="active">Instructors</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li id="login-btn-mobile" class="login-btn-mobile"><a href="login.html" class="btn btn-primary">Login</a></li>
+                    <li id="dashboard-btn-mobile" class="login-btn-mobile" style="display: none;"><a href="#" class="btn btn-primary">Dashboard</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="theme-switcher">
+                        <input type="checkbox" id="theme-toggle-checkbox">
+                        <label for="theme-toggle-checkbox" class="slider"><i class="bi bi-sun-fill sun-icon"></i><i class="bi bi-moon-fill moon-icon"></i></label>
+                    </div>
+                    <a href="login.html" id="login-btn-desktop" class="btn btn-primary login-btn-desktop">Login</a>
+                    <a href="#" id="dashboard-btn-desktop" class="btn btn-primary login-btn-desktop" style="display: none;">Dashboard</a>
+                    <button class="hamburger" id="hamburger-menu"><i class="bi bi-list"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section">
+            <div class="container">
+                <h1 class="animate-on-load">Meet Our Experts</h1>
+                <p class="animate-on-load">Learn from the best in the industry.</p>
+            </div>
+        </section>
+
+        <section class="container instructor-section">
+             <div id="instructor-grid" class="instructor-grid">
+                <p>Loading instructors...</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 SkillPro Institute. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/instructors.js"></script>
+</body>
+</html>

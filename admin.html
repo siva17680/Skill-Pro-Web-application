@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | SkillPro Institute</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+<body>
+    <div id="loader-wrapper"><div class="spinner"></div></div>
+
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo"><span>SkillPro</span></a>
+                <div class="nav-actions">
+                    <span id="user-name" class="welcome-user"></span>
+                    <div class="theme-switcher">
+                        <input type="checkbox" id="theme-toggle-checkbox">
+                        <label for="theme-toggle-checkbox" class="slider"><i class="bi bi-sun-fill sun-icon"></i><i class="bi bi-moon-fill moon-icon"></i></label>
+                    </div>
+                    <button id="logout-btn" class="btn btn-primary">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section">
+            <div class="container">
+                <h1>Admin Dashboard</h1>
+                <p>Institute Management Panel.</p>
+            </div>
+        </section>
+        
+        <section class="container dashboard-section">
+            <div id="alert-message" class="alert-message" style="display: none;"></div>
+            <div class="dashboard-grid-full">
+                <div class="dashboard-card animate-on-scroll">
+                    <div class="card-header">
+                        <h3><i class="bi bi-book-half"></i> Manage Courses</h3>
+                        <div class="search-wrapper">
+                            <i class="bi bi-search"></i>
+                            <input type="text" id="course-search" placeholder="Search courses...">
+                        </div>
+                    </div>
+                    <form id="add-course-form" class="management-form">
+                        <button type="submit" class="btn btn-primary">Add Course</button>
+                    </form>
+                    <div class="management-table-wrapper">
+                        <table id="courses-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Duration</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="dashboard-card animate-on-scroll">
+                    <div class="card-header">
+                        <h3><i class="bi bi-person-video3"></i> Manage Instructors</h3>
+                        <div class="search-wrapper">
+                            <i class="bi bi-search"></i>
+                            <input type="text" id="instructor-search" placeholder="Search instructors...">
+                        </div>
+                    </div>
+                    <form id="add-instructor-form" class="management-form">
+                        <button type="submit" class="btn btn-primary">Add Instructor</button>
+                    </form>
+                    <div class="management-table-wrapper">
+                        <table id="instructors-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Expertise</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="dashboard-card animate-on-scroll">
+                    <div class="card-header">
+                        <h3><i class="bi bi-calendar-event-fill"></i> Manage Events</h3>
+                        <div class="search-wrapper">
+                            <i class="bi bi-search"></i>
+                            <input type="text" id="event-search" placeholder="Search events...">
+                        </div>
+                    </div>
+                    <form id="add-event-form" class="management-form">
+                        <button type="submit" class="btn btn-primary">Add Event</button>
+                    </form>
+                    <div class="management-table-wrapper">
+                        <table id="events-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="dashboard-card animate-on-scroll">
+                    <div class="card-header">
+                        <h3><i class="bi bi-people-fill"></i> Manage Users</h3>
+                        <div class="search-wrapper">
+                            <i class="bi bi-search"></i>
+                            <input type="text" id="user-search" placeholder="Search users...">
+                        </div>
+                    </div>
+                    <div class="management-table-wrapper">
+                        <table id="users-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        </footer>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

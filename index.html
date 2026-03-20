@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillPro Institute | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div id="loader-wrapper"><div class="spinner"></div></div>
+
+<header class="main-header">
+  <div class="container">
+    <nav class="main-nav">
+      <a href="index.html" class="logo"><span>SkillPro</span></a>
+
+      <ul class="nav-links" id="nav-links-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="instructors.html">Instructors</a></li>
+        <li><a href="events.html">Events</a></li>
+        <!-- MOBILE -->
+        <li id="mobile-auth" class="login-btn-mobile">
+          <a href="login.html" id="mobile-login" class="btn btn-primary">Login</a>
+          <a href="#" id="mobile-dashboard" class="btn btn-primary" style="display: none;">Dashboard</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="theme-switcher">
+          <input type="checkbox" id="theme-toggle-checkbox" />
+          <label for="theme-toggle-checkbox" class="slider">
+            <i class="bi bi-sun-fill sun-icon"></i>
+            <i class="bi bi-moon-fill moon-icon"></i>
+          </label>
+        </div>
+        <!-- DESKTOP -->
+        <a href="login.html" id="desktop-login" class="btn btn-primary">Login</a>
+        <a href="#" id="desktop-dashboard" class="btn btn-primary" style="display: none;">Dashboard</a>
+
+        <button class="hamburger" id="hamburger-menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop');">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 class="animate-on-load">Build Your Future, Today.</h1>
+        <p class="animate-on-load">Join the leading institute in Sri Lanka for professional courses in technology, business, and creative arts.</p>
+        <div class="hero-buttons-wrapper animate-on-load">
+          <a href="courses.html" class="btn btn-accent"><i class="bi bi-compass-fill"></i> Explore Courses</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-us-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image animate-on-scroll">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" alt="Diverse students collaborating" />
+          </div>
+          <div class="about-content animate-on-scroll">
+            <span class="section-tag">About SkillPro</span>
+            <h2>Shaping the Future of Sri Lankan Talent</h2>
+            <p>Founded in Colombo, SkillPro Institute bridges the gap between academics and industry. We empower students with practical skills in high-growth sectors.</p>
+            <p><strong>Our Mission:</strong> To provide accessible, world-class education that prepares students for global success.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Growth Section -->
+    <section class="campus-growth-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Nationwide Journey</h2>
+          <p>From a single campus to a growing network, we make education accessible across the country.</p>
+        </div>
+        <div class="campus-growth-grid">
+          <div class="growth-card animate-on-scroll">
+            <div class="growth-icon"><i class="bi bi-flag-fill"></i></div>
+            <span class="growth-year">2020</span>
+            <h3>Colombo Flagship</h3>
+            <p>Our journey began in the capital, setting a new standard for tech education in the Western Province.</p>
+          </div>
+          <div class="growth-card animate-on-scroll">
+            <div class="growth-icon"><i class="bi bi-building-up"></i></div>
+            <span class="growth-year">2022</span>
+            <h3>Kandy Expansion</h3>
+            <p>We expanded to the hill country, providing opportunities for students in the Central Province.</p>
+          </div>
+          <div class="growth-card animate-on-scroll">
+            <div class="growth-icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <span class="growth-year">2024</span>
+            <h3>Matara Launch</h3>
+            <p>Our newest campus now serves the bright minds of the Southern Province.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-us-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Get in Touch</h2>
+          <p>Have questions? Our team is here to help you on your educational journey.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-form-wrapper animate-on-scroll">
+            <form id="contact-form">
+              <div class="input-group"><i class="bi bi-person-fill"></i><input type="text" name="name" placeholder="Your Name" required /></div>
+              <div class="input-group"><i class="bi bi-envelope-fill"></i><input type="email" name="email" placeholder="Your Email" required /></div>
+              <div class="input-group"><i class="bi bi-chat-left-text-fill"></i><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
+              <button type="submit" class="btn btn-primary"><i class="bi bi-send-fill"></i> Send Message</button>
+            </form>
+          </div>
+          <div class="contact-details-wrapper animate-on-scroll">
+            <h3>Contact Information</h3>
+            <ul class="contact-list">
+              <li><i class="bi bi-pin-map-fill"></i><span>No. 123, Galle Road, Colombo 03, Sri Lanka</span></li>
+              <li><i class="bi bi-telephone-fill"></i><span>+94 11 234 5678</span></li>
+              <li><i class="bi bi-envelope-fill"></i><span>info@skillpro.lk</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <p>&copy; 2025 SkillPro Institute. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase & JS -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/main.js"></script>
+
